@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的工具箱</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">⚙️</span>
+                <span>我的工具箱</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home">首页</a>
+                <a href="#about">关于</a>
+                <button id="addBtn">+ 添加</button>
+                <button id="categoryBtn">📁 分类管理</button>
+                <button id="settingsBtn">⚙️ 设置</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="search-section">
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="请输入搜索关键词..." id="searchInput">
+            <button class="search-btn" id="searchBtn">搜索</button>
+        </div>
+    </div>
+
+    <main>
+        <div id="home">
+            <div class="current-category" id="currentCategory">
+                <h2>当前分类：<span class="category-badge">全部工具</span></h2>
+            </div>
+
+            <div class="category-tabs" id="categoryTabs">
+                <button class="tab active" data-category="all">
+                    <span>全部</span>
+                </button>
+            </div>
+
+            <div class="tools-grid" id="toolsGrid">
+                <div id="skeleton" class="tools-grid">
+                    <div class="skeleton-card">
+                        <div class="skeleton-icon"></div>
+                        <div class="skeleton-title"></div>
+                        <div class="skeleton-desc"></div>
+                    </div>
+                    <div class="skeleton-card">
+                        <div class="skeleton-icon"></div>
+                        <div class="skeleton-title"></div>
+                        <div class="skeleton-desc"></div>
+                    </div>
+                    <div class="skeleton-card">
+                        <div class="skeleton-icon"></div>
+                        <div class="skeleton-title"></div>
+                        <div class="skeleton-desc"></div>
+                    </div>
+                    <div class="skeleton-card">
+                        <div class="skeleton-icon"></div>
+                        <div class="skeleton-title"></div>
+                        <div class="skeleton-desc"></div>
+                    </div>
+                    <div class="skeleton-card">
+                        <div class="skeleton-icon"></div>
+                        <div class="skeleton-title"></div>
+                        <div class="skeleton-desc"></div>
+                    </div>
+                    <div class="skeleton-card">
+                        <div class="skeleton-icon"></div>
+                        <div class="skeleton-title"></div>
+                        <div class="skeleton-desc"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">热门站点</h2>
+            <div class="sites-list">
+                <div class="site-item" data-url="https://www.baidu.com">
+                    <span class="site-rank top">1</span>
+                    <div class="site-info">
+                        <div class="site-name">百度</div>
+                        <div class="site-desc">全球最大的中文搜索引擎</div>
+                    </div>
+                </div>
+                <div class="site-item" data-url="https://www.github.com">
+                    <span class="site-rank top">2</span>
+                    <div class="site-info">
+                        <div class="site-name">GitHub</div>
+                        <div class="site-desc">全球最大的代码托管平台</div>
+                    </div>
+                </div>
+                <div class="site-item" data-url="https://www.stackoverflow.com">
+                    <span class="site-rank top">3</span>
+                    <div class="site-info">
+                        <div class="site-name">Stack Overflow</div>
+                        <div class="site-desc">程序员问答社区</div>
+                    </div>
+                </div>
+                <div class="site-item" data-url="https://www.npmjs.com">
+                    <span class="site-rank">4</span>
+                    <div class="site-info">
+                        <div class="site-name">npm</div>
+                        <div class="site-desc">JavaScript包管理器</div>
+                    </div>
+                </div>
+                <div class="site-item" data-url="https://developer.mozilla.org">
+                    <span class="site-rank">5</span>
+                    <div class="site-info">
+                        <div class="site-name">MDN</div>
+                        <div class="site-desc">Web开发者文档</div>
+                    </div>
+                </div>
+                <div class="site-item" data-url="https://www.w3schools.com">
+                    <span class="site-rank">6</span>
+                    <div class="site-info">
+                        <div class="site-name">W3Schools</div>
+                        <div class="site-desc">在线编程教程</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 我的工具箱 - 让工作更高效</p>
+    </footer>
+
+    <div class="toast" id="toast"></div>
+
+    <div class="modal-overlay" id="addModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">添加工具链接</h2>
+                <button class="close-btn">×</button>
+            </div>
+            <form id="addToolForm">
+                <div class="form-group">
+                    <label>工具名称 <span style="color: #f56565;">*</span></label>
+                    <input type="text" id="toolName" placeholder="例如：GitHub" required>
+                </div>
+                <div class="form-group">
+                    <label>工具描述</label>
+                    <textarea id="toolDesc" placeholder="输入工具的简短描述..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>网站链接 <span style="color: #f56565;">*</span></label>
+                    <input type="url" id="toolUrl" placeholder="例如：https://github.com" required>
+                </div>
+                <div class="form-group">
+                    <label>图标（选一个emoji）</label>
+                    <input type="text" id="toolIcon" placeholder="例如：💻" maxlength="2" value="🔗">
+                </div>
+                <div class="form-group">
+                    <label>分类</label>
+                    <select id="toolCategory">
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary">取消</button>
+                    <button type="submit" class="btn btn-primary">添加工具</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="editModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">编辑工具</h2>
+                <button class="close-btn">×</button>
+            </div>
+            <form id="editToolForm">
+                <input type="hidden" id="editToolIndex">
+                <div class="form-group">
+                    <label>工具名称 <span style="color: #f56565;">*</span></label>
+                    <input type="text" id="editToolName" placeholder="例如：GitHub" required>
+                </div>
+                <div class="form-group">
+                    <label>工具描述</label>
+                    <textarea id="editToolDesc" placeholder="输入工具的简短描述..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>网站链接 <span style="color: #f56565;">*</span></label>
+                    <input type="url" id="editToolUrl" placeholder="例如：https://github.com" required>
+                </div>
+                <div class="form-group">
+                    <label>图标（选一个emoji）</label>
+                    <input type="text" id="editToolIcon" placeholder="例如：💻" maxlength="2">
+                </div>
+                <div class="form-group">
+                    <label>分类</label>
+                    <select id="editToolCategory">
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary">取消</button>
+                    <button type="submit" class="btn btn-primary">保存修改</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="categoryModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">分类管理</h2>
+                <button class="close-btn">×</button>
+            </div>
+            <div class="form-group">
+                <label>新分类名称</label>
+                <input type="text" id="newCategoryName" placeholder="输入分类名称">
+            </div>
+            <div class="form-group">
+                <label>选择分类颜色</label>
+                <div class="color-picker" id="categoryColorPicker">
+                    <div class="color-item" style="background: #667eea;" data-color="#667eea"></div>
+                    <div class="color-item" style="background: #f56565;" data-color="#f56565"></div>
+                    <div class="color-item" style="background: #48bb78;" data-color="#48bb78"></div>
+                    <div class="color-item" style="background: #ed8936;" data-color="#ed8936"></div>
+                    <div class="color-item" style="background: #9f7aea;" data-color="#9f7aea"></div>
+                    <div class="color-item" style="background: #38b2ac;" data-color="#38b2ac"></div>
+                    <div class="color-item" style="background: #e53e3e;" data-color="#e53e3e"></div>
+                    <div class="color-item" style="background: #805ad5;" data-color="#805ad5"></div>
+                    <div class="color-item" style="background: #3182ce;" data-color="#3182ce"></div>
+                    <div class="color-item" style="background: #38a169;" data-color="#38a169"></div>
+                    <div class="color-item" style="background: #dd6b20;" data-color="#dd6b20"></div>
+                    <div class="color-item" style="background: #b794f4;" data-color="#b794f4"></div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary">取消</button>
+                <button type="button" class="btn btn-primary">添加分类</button>
+            </div>
+            <div class="category-list" id="categoryList">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="settingsModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">设置</h2>
+                <button class="close-btn">×</button>
+            </div>
+            <div class="form-group">
+                <label>背景图片URL</label>
+                <input type="url" id="bgImageUrl" placeholder="输入背景图片链接">
+                <div class="preview-box" id="bgPreview">
+                    <span class="empty">预览区域</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>快速选择颜色</label>
+                <div class="color-picker" id="colorPicker">
+                    <div class="color-item" style="background: #f5f7fa;" data-color="#f5f7fa"></div>
+                    <div class="color-item" style="background: #f0fff4;" data-color="#f0fff4"></div>
+                    <div class="color-item" style="background: #fffbf0;" data-color="#fffbf0"></div>
+                    <div class="color-item" style="background: #faf5ff;" data-color="#faf5ff"></div>
+                    <div class="color-item" style="background: #ebf8ff;" data-color="#ebf8ff"></div>
+                    <div class="color-item" style="background: #fff5f5;" data-color="#fff5f5"></div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary">清除背景</button>
+                <button type="button" class="btn btn-primary">保存设置</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
